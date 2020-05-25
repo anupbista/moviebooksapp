@@ -4,38 +4,37 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MainMovie } from "./style";
+import { MainBook } from "./style";
 
-export default function NowPlaying({ movie }) {
+export default function LatestBooks({ book }) {
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 6,
     slidesToScroll: 1,
   };
   return (
-    <MainMovie>
-      <Container>
+      <Container fluid>
         <div className="clearfix mt-5 mb-2">
-          <h4 className="float-left">Latest Movies</h4>
+          <h4 className="float-left">Latest Books</h4>
           <Link className="float-right text-uppercase" to="/">
             see all
           </Link>
         </div>
         <Slider {...settings}>
-          {movie.map(function (movie) {
+          {book.map(function (book) {
             return (
-              <React.Fragment>
-                <Link to={`/movies/${movie.id}`}>
+              <React.Fragment key={book.id}>
+                <Link to={`/books/${book.id}`}>
                   <Col>
                     <Card>
                       <Card.Img
                         variant="top"
-                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        src={book.imagepath}
                       />
                       <Card.Body>
-                        <span>{movie.title}</span>
+                        <span>{book.name}</span>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -45,6 +44,5 @@ export default function NowPlaying({ movie }) {
           })}
         </Slider>
       </Container>
-    </MainMovie>
   );
 }

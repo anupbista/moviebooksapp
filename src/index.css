@@ -1,3 +1,24 @@
 html {
   font-family: "Poppins", sans-serif;
 }
+img{
+  max-width: 100%;
+}
+
+/* Bootstrap */
+.container-fluid{
+  padding: 0 40px !important;
+}
+.dropdown-menu .dropdown-item{
+  padding: .5rem 1.5rem;
+}
+.nav-item:hover .dropdown-menu{
+  display:block!important
+}
+.navbar-light .dropdown-menu .nav-link{
+  color: #000 !important;
+}
+/* Custom */
+.list-item{
+  margin-bottom: 30px;
+}

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavWrapper = styled.div`
-  background-color: #40916c;
+  background-color: #1976d2;
   font-family: "Poppins", sans-serif;
   form {
     background-color: white;
@@ -20,34 +20,28 @@ export const NavWrapper = styled.div`
     }
   }
   .nav-link {
-    color: #000;
+    color: #fff;
     margin-left: 20px;
   }
   .navbar-light .navbar-nav .nav-link {
-    color: #000;
+    color: #fff;
     margin-left: 20px;
   }
   .navbar-light .navbar-nav .nav-link:hover {
-    color: #003554;
-    border-top: 4px solid #003554;
+    font-weight: 500
   }
   .img {
-    height: 70px;
+    height: 32px;
   }
   .nav-item .login {
     background-color: black;
   }
-  .navbar-light .navbar-nav .login {
-    color: #000 !important;
-    text-decoration: none;
-  }
-  
   .dropdown-toggle:after { content: none }
   .dropdown-item.active, .dropdown-item:active {
     background-color: #fff;
     color: #000;
   }
   .dropdown-item.active, .dropdown-item:hover{
-    color:#028090;
+    color:#1976d2;
   }
 `;
