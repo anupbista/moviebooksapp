@@ -9,9 +9,9 @@ import { MainMovie } from "./style";
 export default function LatestMovies({ movie }) {
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
   };
   return (
@@ -30,10 +30,7 @@ export default function LatestMovies({ movie }) {
                 <Link to={`/movies/${movie.id}`}>
                   <Col>
                     <Card>
-                      <Card.Img
-                        variant="top"
-                        src={movie.imagepath}
-                      />
+                      <Card.Img variant="top" src={movie.imagepath} />
                       <Card.Body>
                         <span>{movie.name}</span>
                       </Card.Body>

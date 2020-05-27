@@ -4,32 +4,28 @@ import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
 
-export default function Movies(props) {
-  const search = props.location.state?.search
-    ? props.location.state.search
-    : "";
-
-  const [latestBooks, setlatestBooks] = useState([]);
+export default function TopratedMovies() {
+  const [topratedBooks, settopratedBooks] = useState([]);
 
   useEffect(() => {
     fetchData();
-  }, [search]);
+  }, []);
 
   const fetchData = async () => {
     const res = await Axios.get(
-      `https://ent-api-dev.herokuapp.com/api/v1/books?search=${search}`
+      `https://ent-api-dev.herokuapp.com/api/v1/books/toprated`
     );
-    setlatestBooks(res.data);
+    settopratedBooks(res.data);
   };
 
   return (
     <Theme>
       <Container fluid>
         <div className="clearfix mt-5 mb-2">
-          <h4 className="float-left">Books</h4>
+          <h4 className="float-left">Top Rated Books</h4>
         </div>
         <Row>
-          {latestBooks.map(function (book) {
+          {topratedBooks.map(function (book) {
             return (
               <Col md={2} key={book.id} className="list-item">
                 <Link to={`/books/${book.id}`}>

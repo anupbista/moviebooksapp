@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainBook = styled.div`
+export const Theme = styled.div`
   a {
     color: #003554;
     font-weight: bold;

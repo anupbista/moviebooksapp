@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavWrapper = styled.div`
-  background-color: #1976d2;
+  background-color: #107a8b;
   font-family: "Poppins", sans-serif;
   form {
     background-color: white;
@@ -12,7 +12,7 @@ export const NavWrapper = styled.div`
     input {
       font-size: 15px;
       border: none;
-      background: transparent;
+      background: white;
       margin: 0 0 0 5px;
     }
     input:focus {
@@ -28,7 +28,7 @@ export const NavWrapper = styled.div`
     margin-left: 20px;
   }
   .navbar-light .navbar-nav .nav-link:hover {
-    font-weight: 500
+    color: #00d1ff;
   }
   .img {
     height: 32px;
@@ -36,12 +36,16 @@ export const NavWrapper = styled.div`
   .nav-item .login {
     background-color: black;
   }
-  .dropdown-toggle:after { content: none }
-  .dropdown-item.active, .dropdown-item:active {
+  .dropdown-toggle:after {
+    content: none;
+  }
+  .dropdown-item.active,
+  .dropdown-item:active {
     background-color: #fff;
     color: #000;
   }
-  .dropdown-item.active, .dropdown-item:hover{
-    color:#1976d2;
+  .dropdown-item.active,
+  .dropdown-item:hover {
+    color: #028090;
   }
 `;

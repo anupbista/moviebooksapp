@@ -9,16 +9,17 @@ import { MainBook } from "./style";
 export default function LatestBooks({ book }) {
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
   };
   return (
+    <MainBook>
       <Container fluid>
         <div className="clearfix mt-5 mb-2">
           <h4 className="float-left">Latest Books</h4>
-          <Link className="float-right text-uppercase" to="/">
+          <Link className="float-right text-uppercase" to="/books">
             see all
           </Link>
         </div>
@@ -29,10 +30,7 @@ export default function LatestBooks({ book }) {
                 <Link to={`/books/${book.id}`}>
                   <Col>
                     <Card>
-                      <Card.Img
-                        variant="top"
-                        src={book.imagepath}
-                      />
+                      <Card.Img variant="top" src={book.imagepath} />
                       <Card.Body>
                         <span>{book.name}</span>
                       </Card.Body>
@@ -44,5 +42,6 @@ export default function LatestBooks({ book }) {
           })}
         </Slider>
       </Container>
+    </MainBook>
   );
 }

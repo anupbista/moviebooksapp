@@ -17,7 +17,7 @@ export default function HomePage() {
   const getAllMovies = async () => {
     const allMovies = await Axios.all([
       Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/movies`),
-      Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/books`)
+      Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/books`),
     ]);
     setlatestMovies(allMovies[0].data);
     setlatestBooks(allMovies[1].data);
