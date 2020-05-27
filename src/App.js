@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <React.Suspense fallback={"loading  ....."}>
+      <React.Suspense fallback={"loading  ...."}>
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/movies" exact component={Movies} />
