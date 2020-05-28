@@ -10,6 +10,6 @@ export const HomeWrapper = styled.div`
   .slick-arrow:hover,
   .slick-arrow:active,
   .slick-arrow:focus {
-    background-color: #40916c !important;
+    background-color: #028090 !important;
   }
 `;

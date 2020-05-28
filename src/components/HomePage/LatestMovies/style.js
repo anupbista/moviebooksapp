@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const MainMovie = styled.div`
-a {
+  a {
     color: #003554;
     font-weight: bold;
-}
-a:hover{
+  }
+  a:hover {
     text-decoration: none;
-    color: #40916c;
-}
+    color: #028090;
+  }
 `;
