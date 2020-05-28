@@ -1,25 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
+import { GlobalContext } from '../..//contexts/GlobalContext';
+import EmptyState from '../shared/empty/index';
 
-export default function Movies(props) {
+export default function Boooks(props) {
   const search = props.location.state?.search
     ? props.location.state.search
     : "";
 
   const [latestBooks, setlatestBooks] = useState([]);
-
+  const { toggleLoading } = useContext(GlobalContext);
   useEffect(() => {
     fetchData();
   }, [search]);
 
   const fetchData = async () => {
+    toggleLoading(true)
     const res = await Axios.get(
       `https://ent-api-dev.herokuapp.com/api/v1/books?search=${search}`
     );
     setlatestBooks(res.data);
+    toggleLoading(false)
   };
 
   return (
@@ -29,7 +33,7 @@ export default function Movies(props) {
           <h4 className="float-left">Books</h4>
         </div>
         <Row>
-          {latestBooks.map(function (book) {
+          {latestBooks.length > 0 ? latestBooks.map(function (book) {
             return (
               <Col md={2} key={book.id} className="list-item">
                 <Link to={`/books/${book.id}`}>
@@ -42,7 +46,8 @@ export default function Movies(props) {
                 </Link>
               </Col>
             );
-          })}
+          }
+          ) : <EmptyState />}
         </Row>
       </Container>
     </Theme>

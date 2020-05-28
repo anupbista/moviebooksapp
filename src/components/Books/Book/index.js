@@ -16,10 +16,10 @@ export default function Book(props) {
     <Theme>
       <Container className="mt-5" fluid>
         <Row>
-          <Col md="6">
+          <Col md="4">
             <img src={book.imagepath} alt="" />
           </Col>
-          <Col md="6">
+          <Col md="8">
             <h2>{book.name}</h2>
             <p align="justify">{book.description}</p>
             <ul>

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
 import EmptyState from "../shared/empty";
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 export default function Movies(props) {
   const search = props.location.state?.search
@@ -15,12 +16,14 @@ export default function Movies(props) {
     : "";
 
     const [latestMovies, setlatestMovies] = useState([]);
-    
+    const { toggleLoading } = useContext(GlobalContext);
     const fetchData = async () => {
+      toggleLoading(true)
         const res = await Axios.get(
           `https://ent-api-dev.herokuapp.com/api/v1/movies?search=${search}&genre=${genre}&country=${country}`
         );
         setlatestMovies(res.data);
+        toggleLoading(false)
       };
       
     useEffect(() => {

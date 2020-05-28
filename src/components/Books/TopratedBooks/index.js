@@ -3,6 +3,7 @@ import { Container, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
+import EmptyState from '../../shared/empty/index';
 
 export default function TopratedMovies() {
   const [topratedBooks, settopratedBooks] = useState([]);
@@ -25,7 +26,7 @@ export default function TopratedMovies() {
           <h4 className="float-left">Top Rated Books</h4>
         </div>
         <Row>
-          {topratedBooks.map(function (book) {
+          {topratedBooks.length > 0 ? topratedBooks.map(function (book) {
             return (
               <Col md={2} key={book.id} className="list-item">
                 <Link to={`/books/${book.id}`}>
@@ -38,7 +39,7 @@ export default function TopratedMovies() {
                 </Link>
               </Col>
             );
-          })}
+          }) : <EmptyState />}
         </Row>
       </Container>
     </Theme>

@@ -3,6 +3,7 @@ import { Container, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
+import EmptyState from '../../shared/empty/index';
 
 export default function PopularBooks() {
   const [popularBooks, setpopularBooks] = useState([]);
@@ -25,7 +26,7 @@ export default function PopularBooks() {
           <h4 className="float-left">Popular Books</h4>
         </div>
         <Row>
-          {popularBooks.map(function (book) {
+          {popularBooks.length > 0 ? popularBooks.map(function (book) {
             return (
               <Col md={2} key={book.id} className="list-item">
                 <Link to={`/books/${book.id}`}>
@@ -38,7 +39,7 @@ export default function PopularBooks() {
                 </Link>
               </Col>
             );
-          })}
+          }) : <EmptyState />}
         </Row>
       </Container>
     </Theme>
