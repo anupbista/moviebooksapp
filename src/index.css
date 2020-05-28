@@ -1,24 +1,46 @@
 html {
-  font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
-img{
-  max-width: 100%;
+img {
+	max-width: 100%;
 }
 
 /* Bootstrap */
-.container-fluid{
-  padding: 0 40px !important;
+.container-fluid {
+	padding: 0 40px !important;
 }
-.dropdown-menu .dropdown-item{
-  padding: .5rem 1.5rem;
+.dropdown-menu .dropdown-item {
+	padding: .5rem 1.5rem;
 }
-.nav-item:hover .dropdown-menu{
+/* .nav-item:hover .dropdown-menu{
   display:block!important
+} */
+.navbar-light .navbar-nav .nav-link{
+  margin-left: 0 !important;
+  padding-left: 1rem !important; 
 }
-.navbar-light .dropdown-menu .nav-link{
+.navbar .dropdown-menu button {
+	display: block;
+	padding: .5rem 1rem;
+	background: #fff !important;
+	border: none;
+	color: #000 !important;
+	margin: 0;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+.navbar .dropdown-menu button:focus,
+.navbar .dropdown-menu button:active{
+  background-color: #fff !important;
+	border: none !important;
   color: #000 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.navbar-light .dropdown-menu .nav-link {
+	color: #000 !important;
 }
 /* Custom */
-.list-item{
-  margin-bottom: 30px;
+.list-item {
+	margin-bottom: 30px;
 }

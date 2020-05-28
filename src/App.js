@@ -50,6 +50,7 @@ function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/movies" exact component={Movies} />
           <Route path="/movies/genre/:id" exact component={Movies} />
+          <Route path="/movies/country/:countryname" exact component={Movies} />
           <Route path="/movies/popular" exact component={PopularMovies} />
           <Route path="/movies/upcoming" exact component={UpcomingMovies} />
           <Route path="/movies/toprated" exact component={TopratedMovies} />

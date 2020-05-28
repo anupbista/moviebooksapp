@@ -7,6 +7,9 @@ import {
   FormControl,
   NavDropdown,
   Container,
+  DropdownButton,
+  MenuItem,
+  Dropdown
 } from "react-bootstrap";
 import { NavWrapper } from "./style";
 import { Link } from "react-router-dom";
@@ -16,6 +19,20 @@ import Axios from "axios";
 
 export default function Navbars() {
   let history = useHistory();
+  const countries = [
+    {
+      name: "United States"
+    },
+    {
+      name: "India"
+    },
+    {
+      name: "South Korea"
+    },
+    {
+      name: "Nepal"
+    },
+  ]
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState([]);
 
@@ -64,20 +81,26 @@ export default function Navbars() {
                 <Nav.Link className="nav-link" as={Link} to="/movies/toprated">
                   Top Rated
                 </Nav.Link>
-                <NavDropdown title="Genre">
-                  {genre.map(function (gen) {
+                <DropdownButton title="Country" drop="right">
+                  {countries.map(function (country) {
                     return (
-                      <Nav.Link
-                        className="nav-link"
-                        as={Link}
-                        key={gen.id}
-                        to={"/movies/genre/" + gen.id}
-                      >
-                        {gen.name}
-                      </Nav.Link>
+                      <Dropdown.Item className="nav-link"
+                      as={Link}
+                      key={country.name}
+                      to={"/movies/country/" + country.name}>{country.name}</Dropdown.Item>
                     );
                   })}
-                </NavDropdown>
+                </DropdownButton>
+                <DropdownButton title="Genre" drop="right">
+                  {genre.map(function (gen) {
+                    return (
+                      <Dropdown.Item className="nav-link"
+                      as={Link}
+                      key={gen.id}
+                      to={"/movies/genre/" + gen.id}>{gen.name}</Dropdown.Item>
+                    );
+                  })}
+                </DropdownButton>
               </NavDropdown>
               <NavDropdown title="Books">
                 <Nav.Link className="nav-link" as={Link} to="/books">
