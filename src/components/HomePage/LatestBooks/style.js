@@ -7,6 +7,6 @@ export const MainBook = styled.div`
   }
   a:hover {
     text-decoration: none;
-    color: #40916c;
+    color: #028090;
   }
 `;

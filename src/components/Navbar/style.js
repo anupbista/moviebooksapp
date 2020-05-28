@@ -4,9 +4,9 @@ export const NavWrapper = styled.div`
   background-color: #107a8b;
   font-family: "Poppins", sans-serif;
   form {
-    background-color: white;
+    background-color: #fff;
     margin-left: 40px;
-    height: 40px;
+    height: 50px;
     padding: 0 20px;
     border-radius: 100px;
     input {
@@ -18,6 +18,9 @@ export const NavWrapper = styled.div`
     input:focus {
       box-shadow: none;
     }
+  }
+  .form-inline {
+    flex-flow: unset;
   }
   .nav-link {
     color: #fff;

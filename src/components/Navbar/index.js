@@ -8,8 +8,7 @@ import {
   NavDropdown,
   Container,
   DropdownButton,
-  MenuItem,
-  Dropdown
+  Dropdown,
 } from "react-bootstrap";
 import { NavWrapper } from "./style";
 import { Link } from "react-router-dom";
@@ -21,18 +20,36 @@ export default function Navbars() {
   let history = useHistory();
   const countries = [
     {
-      name: "United States"
+      name: "United States",
     },
     {
-      name: "India"
+      name: "India",
     },
     {
-      name: "South Korea"
+      name: "South Korea",
     },
     {
-      name: "Nepal"
+      name: "Nepal",
     },
-  ]
+    {
+      name: "United Kingdom",
+    },
+    {
+      name: "Japan",
+    },
+    {
+      name: "Russia",
+    },
+    {
+      name: "Canada",
+    },
+    {
+      name: "Thailand",
+    },
+    {
+      name: "China",
+    },
+  ];
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState([]);
 
@@ -69,54 +86,69 @@ export default function Navbars() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto nav-link dropdown-toggle">
               <NavDropdown title="Movies">
-                <Nav.Link className="nav-link" as={Link} to="/movies">
+                <Nav.Link className="dropdown-item" as={Link} to="/movies">
                   All
                 </Nav.Link>
-                <Nav.Link className="nav-link" as={Link} to="/movies/popular">
+                <Nav.Link as={Link} to="/movies/popular">
                   Popular
                 </Nav.Link>
-                <Nav.Link className="nav-link" as={Link} to="/movies/upcoming">
+                <Nav.Link as={Link} to="/movies/upcoming">
                   Upcoming
                 </Nav.Link>
-                <Nav.Link className="nav-link" as={Link} to="/movies/toprated">
+                <Nav.Link as={Link} to="/movies/toprated">
                   Top Rated
                 </Nav.Link>
                 <DropdownButton title="Country" drop="right">
                   {countries.map(function (country) {
                     return (
-                      <Dropdown.Item className="nav-link"
-                      as={Link}
-                      key={country.name}
-                      to={"/movies/country/" + country.name}>{country.name}</Dropdown.Item>
+                      <Dropdown.Item
+                        as={Link}
+                        key={country.name}
+                        to={"/movies/country/" + country.name}
+                      >
+                        {country.name}
+                      </Dropdown.Item>
                     );
                   })}
                 </DropdownButton>
                 <DropdownButton title="Genre" drop="right">
                   {genre.map(function (gen) {
                     return (
-                      <Dropdown.Item className="nav-link"
-                      as={Link}
-                      key={gen.id}
-                      to={"/movies/genre/" + gen.id}>{gen.name}</Dropdown.Item>
+                      <Dropdown.Item
+                        as={Link}
+                        key={gen.id}
+                        to={"/movies/genre/" + gen.id}
+                      >
+                        {gen.name}
+                      </Dropdown.Item>
                     );
                   })}
                 </DropdownButton>
               </NavDropdown>
               <NavDropdown title="Books">
-                <Nav.Link className="nav-link" as={Link} to="/books">
+                <Nav.Link as={Link} to="/books">
                   All
                 </Nav.Link>
-                <Nav.Link className="nav-link" as={Link} to="/books/popular">
+                <Nav.Link as={Link} to="/books/popular">
                   Popular
                 </Nav.Link>
-                <Nav.Link className="nav-link" as={Link} to="/books/toprated">
+                <Nav.Link as={Link} to="/books/toprated">
                   Top Rated
                 </Nav.Link>
               </NavDropdown>
               <NavDropdown title="Games">
-                <NavDropdown.Item href="#popular">Popular</NavDropdown.Item>
-                <NavDropdown.Item href="#toprated">Top Rated</NavDropdown.Item>
-                <NavDropdown.Item href="#category">Category</NavDropdown.Item>
+                <Nav.Link as={Link} to="/games">
+                  All
+                </Nav.Link>
+                <Nav.Link as={Link} to="/games/popular">
+                  Popular
+                </Nav.Link>
+                <Nav.Link as={Link} to="/games/toprated">
+                  Top Rated
+                </Nav.Link>
+                <Nav.Link as={Link} to="/games/category">
+                  Category
+                </Nav.Link>
               </NavDropdown>
               <NavDropdown title="Youtube">
                 <NavDropdown.Item href="#popular">Popular</NavDropdown.Item>
