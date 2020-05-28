@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import { Theme } from "./style";
+import { GlobalContext } from '../../../contexts/GlobalContext';
 
 export default function Book(props) {
   const bookId = props.match.params.id;
   const [book, setBook] = useState({ genre: [] });
+  const { toggleLoading } = useContext(GlobalContext);
   useEffect(() => {
+    toggleLoading(true)
     Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/books/${bookId}`)
-      .then((res) => setBook(res.data))
+      .then((res) => {
+        setBook(res.data)
+        toggleLoading(false)
+      })
       .catch((err) => console.error(err));
   }, [bookId, props.match.params.id]);
 
