@@ -3,6 +3,7 @@ import { Container, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
+import EmptyState from "../shared/empty";
 
 export default function Movies(props) {
     
@@ -14,7 +15,7 @@ export default function Movies(props) {
     
     useEffect(() => {
         fetchData();
-    }, [search, genre]);
+    }, [search, genre, country]);
 
     const fetchData = async () => {
         const res = await Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/movies?search=${search}&genre=${genre}&country=${country}`)
@@ -27,7 +28,7 @@ export default function Movies(props) {
                 <h4 className="float-left">Movies</h4>
             </div>
             <Row>
-                {latestMovies.map(function (movie) {
+                {latestMovies.length > 0 ? latestMovies.map(function (movie) {
                     return (
                         <Col md={2} key={movie.id} className="list-item">
                             <Link to={`/movies/${movie.id}`}>
@@ -43,7 +44,7 @@ export default function Movies(props) {
                             </Link>
                         </Col>
                     );
-                })}
+                }): <EmptyState /> }
             </Row>
         </Container>
     );

@@ -4,7 +4,9 @@ html {
 img {
 	max-width: 100%;
 }
-
+.flex{
+  display: flex !important;
+}
 /* Bootstrap */
 .container-fluid {
 	padding: 0 40px !important;
