@@ -77,7 +77,7 @@ export default function Navbars() {
 
   return (
     <NavWrapper>
-      <Container fluid>
+      <Container fluid className="shadow-1">
         <Navbar expand="lg">
           <Link to="/">
             <img className="img" src="/logos/logo-white.png" />
@@ -85,7 +85,7 @@ export default function Navbars() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto nav-link dropdown-toggle">
-              <NavDropdown title="Movies">
+              <NavDropdown title="Movies" >
                 <Nav.Link className="dropdown-item" as={Link} to="/movies">
                   All
                 </Nav.Link>
@@ -98,7 +98,7 @@ export default function Navbars() {
                 <Nav.Link as={Link} to="/movies/toprated">
                   Top Rated
                 </Nav.Link>
-                <DropdownButton title="Country" className="expand-menu" drop="right">
+                <DropdownButton  title="Country" className="expand-menu" drop="right">
                   {countries.map(function (country) {
                     return (
                       <Dropdown.Item
@@ -136,7 +136,7 @@ export default function Navbars() {
                   Top Rated
                 </Nav.Link>
               </NavDropdown>
-              <NavDropdown title="Games">
+              {/* <NavDropdown title="Games">
                 <Nav.Link as={Link} to="/games">
                   All
                 </Nav.Link>
@@ -160,7 +160,7 @@ export default function Navbars() {
                   Music Videos
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#learning">Learning</NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
             <Form inline>
               <FormControl

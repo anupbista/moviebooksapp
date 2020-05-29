@@ -5,28 +5,45 @@ import { Theme } from "./style";
 import Axios from "axios";
 import { GlobalContext } from '../../../contexts/GlobalContext';
 import EmptyState from '../../shared/empty';
+import ReactPaginate from 'react-paginate';
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
 export default function TopratedMovies() {
   const [topratedMovies, settopratedMovies] = useState([]);
-  const { toggleLoading } = useContext(GlobalContext);
+  const { loading, toggleLoading } = useContext(GlobalContext);
+  const [page, setPage] = useState({
+    perPage: 15,
+    currentPage: 0
+  });
+  const [pageCount, setPageCount] = useState(0);
+  
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
 
   const fetchData = async () => {
     toggleLoading(true)
     const res = await Axios.get(
       `https://ent-api-dev.herokuapp.com/api/v1/movies/toprated`
     );
-    settopratedMovies(res.data);
+    settopratedMovies(res.data.data);
+    setPageCount(res.data.count / 15)
     toggleLoading(false)
   };
 
+  const handlePageChange = (e) => {
+    const selectedPage = e.selected;
+    setPage({
+      ...page,
+      currentPage: selectedPage,
+    });
+  }
+
   return (
     <Theme>
-      <Container fluid>
-        <div className="clearfix mt-5 mb-2">
-          <h4 className="float-left">Top Rated Movies</h4>
+      {!loading ? <Container fluid>
+        <div className="clearfix mt-5 mb-5">
+          <h4 className="float-left" className="title">Top Rated Movies</h4>
         </div>
         <Row>
           {topratedMovies.length > 0 ? topratedMovies.map(function (movie) {
@@ -35,7 +52,7 @@ export default function TopratedMovies() {
                 <Link to={`/movies/${movie.id}`}>
                   <Card>
                     <Card.Img variant="top" src={movie.imagepath} />
-                    <Card.Body>
+                    <Card.Body className="ellipsis">
                       <span>{movie.name}</span>
                     </Card.Body>
                   </Card>
@@ -44,7 +61,22 @@ export default function TopratedMovies() {
             );
           }) : <EmptyState />}
         </Row>
-      </Container>
+        <Row className="justify-content-center">
+        {topratedMovies.length > 0 ?  <ReactPaginate
+         previousLabel={<FaAngleLeft />}
+         nextLabel={<FaAngleRight />}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          forcePage={page.currentPage}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageChange}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"} />  : null }
+      </Row>
+      </Container> : null }
     </Theme>
   );
 }

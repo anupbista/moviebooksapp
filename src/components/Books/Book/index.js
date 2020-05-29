@@ -7,7 +7,7 @@ import { GlobalContext } from '../../../contexts/GlobalContext';
 export default function Book(props) {
   const bookId = props.match.params.id;
   const [book, setBook] = useState({ genre: [] });
-  const { toggleLoading } = useContext(GlobalContext);
+  const { loading, toggleLoading } = useContext(GlobalContext);
   useEffect(() => {
     toggleLoading(true)
     Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/books/${bookId}`)
@@ -20,19 +20,19 @@ export default function Book(props) {
 
   return (
     <Theme>
-      <Container className="mt-5" fluid>
+      { !loading ? <Container className="mt-5" fluid>
         <Row>
           <Col md="4">
-            <img src={book.imagepath} alt="" />
+            <img className="item-image mb-3" src={book.imagepath} alt="" />
           </Col>
           <Col md="8">
             <h2>{book.name}</h2>
-            <p align="justify">{book.description}</p>
-            <ul>
-              <li>Rating: {book.rating}</li>
-              <li>Released date: {book.releasedate}</li>
-              <li>Author: {book.author}</li>
-              <li>Publisher: {book.publisher}</li>
+            <p align="justify" className="mt-3">{book.description}</p>
+            <ul className="item-description">
+              <li><span>Rating: </span>{book.rating}</li>
+              <li><span>Released date: </span>{book.releasedate}</li>
+              <li><span>Author: </span>{book.author}</li>
+              <li><span>Publisher: </span>{book.publisher}</li>
             </ul>
             <a
               target="_blank"
@@ -46,7 +46,7 @@ export default function Book(props) {
             </a>
           </Col>
         </Row>
-      </Container>
+      </Container> : null }
     </Theme>
   );
 }

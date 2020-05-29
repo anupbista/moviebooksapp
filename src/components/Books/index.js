@@ -3,8 +3,10 @@ import { Container, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Theme } from "./style";
 import Axios from "axios";
-import { GlobalContext } from '../..//contexts/GlobalContext';
+import { GlobalContext } from '../../contexts/GlobalContext';
 import EmptyState from '../shared/empty/index';
+import ReactPaginate from 'react-paginate';
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
 export default function Boooks(props) {
   const search = props.location.state?.search
@@ -12,25 +14,40 @@ export default function Boooks(props) {
     : "";
 
   const [latestBooks, setlatestBooks] = useState([]);
-  const { toggleLoading } = useContext(GlobalContext);
+  const { loading, toggleLoading } = useContext(GlobalContext);
+  const [page, setPage] = useState({
+    perPage: 15,
+    currentPage: 0
+  });
+  const [pageCount, setPageCount] = useState(0);
+  
   useEffect(() => {
     fetchData();
-  }, [search]);
+  }, [search, page]);
 
   const fetchData = async () => {
     toggleLoading(true)
     const res = await Axios.get(
       `https://ent-api-dev.herokuapp.com/api/v1/books?search=${search}`
     );
-    setlatestBooks(res.data);
+    setlatestBooks(res.data.data);
+    setPageCount(res.data.count / 15)
     toggleLoading(false)
   };
 
+  const handlePageChange = (e) => {
+    const selectedPage = e.selected;
+    setPage({
+      ...page,
+      currentPage: selectedPage,
+    });
+  }
+
   return (
     <Theme>
-      <Container fluid>
-        <div className="clearfix mt-5 mb-2">
-          <h4 className="float-left">Books</h4>
+      { !loading ? <Container fluid>
+        <div className="clearfix mt-5 mb-5">
+          <h4 className="float-left" className="title">Books</h4>
         </div>
         <Row>
           {latestBooks.length > 0 ? latestBooks.map(function (book) {
@@ -39,7 +56,7 @@ export default function Boooks(props) {
                 <Link to={`/books/${book.id}`}>
                   <Card>
                     <Card.Img variant="top" src={book.imagepath} />
-                    <Card.Body>
+                    <Card.Body className="ellipsis">
                       <span>{book.name}</span>
                     </Card.Body>
                   </Card>
@@ -49,7 +66,22 @@ export default function Boooks(props) {
           }
           ) : <EmptyState />}
         </Row>
-      </Container>
+        <Row className="justify-content-center">
+        {latestBooks.length > 0 ? <ReactPaginate
+          previousLabel={<FaAngleLeft />}
+          nextLabel={<FaAngleRight />}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageChange}
+          forcePage={page.currentPage}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"} /> : null }
+      </Row>
+      </Container> : null }
     </Theme>
   );
 }

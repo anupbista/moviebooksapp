@@ -6,7 +6,7 @@ export const NavWrapper = styled.div`
   form {
     background-color: #fff;
     margin-left: 40px;
-    height: 50px;
+    height: 45px;
     padding: 0 20px;
     border-radius: 100px;
     input {

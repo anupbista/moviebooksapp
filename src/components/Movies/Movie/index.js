@@ -7,7 +7,7 @@ import { GlobalContext } from '../../../contexts/GlobalContext';
 export default function Movie(props) {
   const movieId = props.match.params.id;
   const [movie, setMovie] = useState({ genre: [] });
-  const { toggleLoading } = useContext(GlobalContext);
+  const { loading, toggleLoading } = useContext(GlobalContext);
   useEffect(() => {
     toggleLoading(true)
     Axios.get(`https://ent-api-dev.herokuapp.com/api/v1/movies/${movieId}`)
@@ -20,22 +20,22 @@ export default function Movie(props) {
 
   return (
     <Theme>
-      <Container className="mt-5" fluid>
+      { !loading ? <Container className="mt-5" fluid>
         <Row>
           <Col md="4">
-            <img src={movie.imagepath} alt="" />
+            <img className="item-image mb-3" src={movie.imagepath} alt="" />
           </Col>
           <Col md="8">
             <h2>{movie.name}</h2>
             <p align="justify">{movie.description}</p>
-            <ul>
-              <li>Rating: {movie.rating}</li>
-              <li>Released date: {movie.releasedate}</li>
-              <li>Country: {movie.country}</li>
+            <ul className="item-description">
+              <li><span>Rating: </span> {movie.rating}</li>
+              <li><span>Released date: </span>{movie.releasedate}</li>
+              <li><span>Country: </span>{movie.country}</li>
               <li>
-                Genre:
+              <span>Genre: </span>
                 {movie.genre.map((genre) => {
-                  return <span key={genre.id}>{genre.name}</span>;
+                  return <ins key={genre.id}>{genre.name}</ins>;
                 })}
               </li>
             </ul>
@@ -55,7 +55,7 @@ export default function Movie(props) {
             </a>
           </Col>
         </Row>
-      </Container>
+      </Container> : null }
     </Theme>
   );
 }

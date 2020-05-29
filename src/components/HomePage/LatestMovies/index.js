@@ -11,13 +11,13 @@ export default function LatestMovies({ movie }) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 6,
           slidesToScroll: 1
         }
       },
@@ -40,8 +40,8 @@ export default function LatestMovies({ movie }) {
   return (
     <MainMovie>
       <Container fluid>
-        <div className="clearfix mt-5 mb-2">
-          <h4 className="float-left">Latest Movies</h4>
+        <div className="clearfix mt-5 mb-3">
+          <h4 className="float-left" className="title">Latest Movies</h4>
           <Link className="float-right text-uppercase" to="/movies">
             see all
           </Link>
@@ -54,7 +54,7 @@ export default function LatestMovies({ movie }) {
                   <Col>
                     <Card>
                       <Card.Img variant="top" src={movie.imagepath} />
-                      <Card.Body>
+                      <Card.Body className="ellipsis">
                         <span>{movie.name}</span>
                       </Card.Body>
                     </Card>

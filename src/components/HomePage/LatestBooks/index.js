@@ -11,13 +11,13 @@ export default function LatestBooks({ book }) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 6,
           slidesToScroll: 1
         }
       },
@@ -40,8 +40,8 @@ export default function LatestBooks({ book }) {
   return (
     <MainBook>
       <Container fluid>
-        <div className="clearfix mt-5 mb-2">
-          <h4 className="float-left">Latest Books</h4>
+        <div className="clearfix mt-5 mb-3">
+          <h4 className="float-left" className="title">Latest Books</h4>
           <Link className="float-right text-uppercase" to="/books">
             see all
           </Link>
@@ -54,7 +54,7 @@ export default function LatestBooks({ book }) {
                   <Col>
                     <Card>
                       <Card.Img variant="top" src={book.imagepath} />
-                      <Card.Body>
+                      <Card.Body className="ellipsis">
                         <span>{book.name}</span>
                       </Card.Body>
                     </Card>
