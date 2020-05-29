@@ -1,5 +1,5 @@
-import React, { useContext, Fragment } from 'react';
-import { GlobalContext } from '../contexts/GlobalContext';
+import React, { useContext, Fragment } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Loader from 'react-loader-spinner'
+import Loader from "react-loader-spinner";
 
 const HomePage = React.lazy(() => import("../components/HomePage"));
 const LatestMovies = React.lazy(() =>
@@ -40,17 +40,15 @@ const PopularBooks = React.lazy(() =>
 const TopratedBooks = React.lazy(() =>
   import("../components/Books/TopratedBooks")
 );
-const Layout = props => {
-  const { loading } = useContext(GlobalContext)
+const Layout = (props) => {
+  const { loading } = useContext(GlobalContext);
   return (
     <Fragment>
-      {loading ? <div className="loader">
-        <Loader
-          type="ThreeDots"
-          color="#00BFFF"
-          height={100}
-          width={100} />
-      </div> : null}
+      {loading ? (
+        <div className="loader">
+          <Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />
+        </div>
+      ) : null}
       <Router>
         <Navbar />
         <React.Suspense fallback={""}>
@@ -58,7 +56,11 @@ const Layout = props => {
             <Route path="/" exact component={HomePage} />
             <Route path="/movies" exact component={Movies} />
             <Route path="/movies/genre/:id" exact component={Movies} />
-            <Route path="/movies/country/:countryname" exact component={Movies} />
+            <Route
+              path="/movies/country/:countryname"
+              exact
+              component={Movies}
+            />
             <Route path="/movies/popular" exact component={PopularMovies} />
             <Route path="/movies/upcoming" exact component={UpcomingMovies} />
             <Route path="/movies/toprated" exact component={TopratedMovies} />
