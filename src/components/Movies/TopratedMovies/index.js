@@ -24,7 +24,7 @@ export default function TopratedMovies() {
   const fetchData = async () => {
     toggleLoading(true)
     const res = await Axios.get(
-      `https://ent-api-dev.herokuapp.com/api/v1/movies/toprated`
+      `https://ent-api-dev.herokuapp.com/api/v1/movies/toprated?page=${page.currentPage + 1}&limit=${page.perPage}`
     );
     settopratedMovies(res.data.data);
     setPageCount(res.data.count / 15)

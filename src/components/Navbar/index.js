@@ -52,6 +52,8 @@ export default function Navbars() {
   ];
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [youTubeCategory, setYouTubeCategory] = useState([]);
 
   const fetchGenre = async () => {
     const res = await Axios.get(
@@ -60,8 +62,24 @@ export default function Navbars() {
     setGenre(res.data);
   };
 
+  const fetchCategory = async () => {
+    const res = await Axios.get(
+      `https://ent-api-dev.herokuapp.com/api/v1/category`
+    );
+    setCategory(res.data);
+  };
+
+  const fetchYouTubeCategory = async () => {
+    const res = await Axios.get(
+      `https://ent-api-dev.herokuapp.com/api/v1/youtubecategory`
+    );
+    setYouTubeCategory(res.data);
+  };
+
   useEffect(() => {
     fetchGenre();
+    fetchCategory();
+    fetchYouTubeCategory();
   }, []);
 
   const searchChangeHandle = (event) => {
@@ -136,7 +154,7 @@ export default function Navbars() {
                   Top Rated
                 </Nav.Link>
               </NavDropdown>
-              {/* <NavDropdown title="Games">
+              <NavDropdown title="Games">
                 <Nav.Link as={Link} to="/games">
                   All
                 </Nav.Link>
@@ -146,21 +164,38 @@ export default function Navbars() {
                 <Nav.Link as={Link} to="/games/toprated">
                   Top Rated
                 </Nav.Link>
-                <Nav.Link as={Link} to="/games/category">
-                  Category
-                </Nav.Link>
+                <DropdownButton title="Category" className="expand-menu" drop="right">
+                  {category.map(function (cat) {
+                    return (
+                      <Dropdown.Item
+                        as={Link}
+                        key={cat.id}
+                        to={"/games/category/" + cat.id}
+                      >
+                        {cat.name}
+                      </Dropdown.Item>
+                    );
+                  })}
+                </DropdownButton>
               </NavDropdown>
-              <NavDropdown title="Youtube">
-                <NavDropdown.Item href="#popular">Popular</NavDropdown.Item>
-                <NavDropdown.Item href="#trending">Trending</NavDropdown.Item>
-                <NavDropdown.Item href="#popularchannel">
-                  Popular Channel
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#musicvideos">
-                  Music Videos
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#learning">Learning</NavDropdown.Item>
-              </NavDropdown> */}
+              <NavDropdown title="YouTube">
+                <Nav.Link as={Link} to="/youtubevideos">
+                  All
+                </Nav.Link>
+                <DropdownButton title="Category" className="expand-menu" drop="right">
+                  {youTubeCategory.map(function (cat) {
+                    return (
+                      <Dropdown.Item
+                        as={Link}
+                        key={cat.id}
+                        to={"/youtubevideos/category/" + cat.id}
+                      >
+                        {cat.name}
+                      </Dropdown.Item>
+                    );
+                  })}
+                </DropdownButton>
+              </NavDropdown>
             </Nav>
             <Form inline>
               <FormControl

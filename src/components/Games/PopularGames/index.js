@@ -8,8 +8,8 @@ import EmptyState from '../../shared/empty';
 import ReactPaginate from 'react-paginate';
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
-export default function PopularMovies() {
-  const [popularMovies, setpopularMovies] = useState([]);
+export default function PopularGames() {
+  const [popularGames, setpopularGames] = useState([]);
   const { loading, toggleLoading } = useContext(GlobalContext);
   const [page, setPage] = useState({
     perPage: 15,
@@ -24,9 +24,9 @@ export default function PopularMovies() {
   const fetchData = async () => {
     toggleLoading(true)
     const res = await Axios.get(
-      `https://ent-api-dev.herokuapp.com/api/v1/movies/popular?page=${page.currentPage + 1}&limit=${page.perPage}`
+      `https://ent-api-dev.herokuapp.com/api/v1/games/popular?page=${page.currentPage + 1}&limit=${page.perPage}`
     );
-    setpopularMovies(res.data.data);
+    setpopularGames(res.data.data);
     setPageCount(res.data.count / 15)
     toggleLoading(false)
   };
@@ -43,17 +43,17 @@ export default function PopularMovies() {
     <Theme>
       {!loading ? <Container fluid>
         <div className="clearfix mt-5 mb-5">
-          <h4 className="float-left" className="title">Popular Movies</h4>
+          <h4 className="float-left" className="title">Popular Games</h4>
         </div>
         <Row>
-          {popularMovies.length > 0 ? popularMovies.map(function (movie) {
+          {popularGames.length > 0 ? popularGames.map(function (game) {
             return (
-              <Col md={2} key={movie.id} className="list-item">
-                <Link to={`/movies/${movie.id}`}>
+              <Col md={2} key={game.id} className="list-item">
+                <Link to={`/games/${game.id}`}>
                   <Card>
-                    <Card.Img variant="top" src={movie.imagepath} />
+                    <Card.Img variant="top" src={game.imagepath} />
                     <Card.Body className="ellipsis">
-                      <span>{movie.name}</span>
+                      <span>{game.name}</span>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -62,7 +62,7 @@ export default function PopularMovies() {
           }) : <EmptyState />}
          </Row>
         <Row className="justify-content-center">
-        {popularMovies.length > 0 ? <ReactPaginate
+        {popularGames.length > 0 ? <ReactPaginate
           previousLabel={<FaAngleLeft />}
           nextLabel={<FaAngleRight />}
           breakLabel={"..."}

@@ -30,16 +30,32 @@ const TopratedMovies = React.lazy(() =>
 const Movies = React.lazy(() => import("../components/Movies"));
 
 // Books Section
-
 const Books = React.lazy(() => import("../components/Books"));
 const Book = React.lazy(() => import("../components/Books/Book"));
 const PopularBooks = React.lazy(() =>
   import("../components/Books/PopularBooks")
 );
-
 const TopratedBooks = React.lazy(() =>
   import("../components/Books/TopratedBooks")
 );
+
+// Games Section
+const Game = React.lazy(() => import("../components/Games/Game"));
+const PopularGames = React.lazy(() =>
+  import("../components/Games/PopularGames")
+);
+const UpcomingGames = React.lazy(() =>
+  import("../components/Games/UpcomingGames")
+);
+const TopratedGames = React.lazy(() =>
+  import("../components/Games/TopratedGames")
+);
+const Games = React.lazy(() => import("../components/Games"));
+
+// YouTubeVideos Section
+const YouTubeVideo = React.lazy(() => import("../components/YouTubeVideos/YouTubeVideo"));
+const YouTubeVideos = React.lazy(() => import("../components/YouTubeVideos"));
+
 const Layout = (props) => {
   const { loading } = useContext(GlobalContext);
   return (
@@ -54,6 +70,7 @@ const Layout = (props) => {
         <React.Suspense fallback={""}>
           <Switch>
             <Route path="/" exact component={HomePage} />
+
             <Route path="/movies" exact component={Movies} />
             <Route path="/movies/genre/:id" exact component={Movies} />
             <Route
@@ -70,6 +87,18 @@ const Layout = (props) => {
             <Route path="/books/popular" exact component={PopularBooks} />
             <Route path="/books/toprated" exact component={TopratedBooks} />
             <Route path="/books/:id" component={Book} />
+
+            <Route path="/games" exact component={Games} />
+            <Route path="/games/category/:id" exact component={Games} />
+            <Route path="/games/popular" exact component={PopularGames} />
+            <Route path="/games/upcoming" exact component={UpcomingGames} />
+            <Route path="/games/toprated" exact component={TopratedGames} />
+            <Route path="/games/:id" component={Game} />
+
+            <Route path="/youtubevideos" exact component={YouTubeVideos} />
+            <Route path="/youtubevideos/category/:id" exact component={YouTubeVideos} />
+            <Route path="/youtubevideos/:id" component={YouTubeVideo} />
+
             <Redirect to="/" />
           </Switch>
         </React.Suspense>
