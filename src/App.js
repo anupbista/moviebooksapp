@@ -4,7 +4,7 @@ import React, { Fragment, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalContextProvider from "./contexts/GlobalContext";
 import Layout from "./layout/Layout";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
