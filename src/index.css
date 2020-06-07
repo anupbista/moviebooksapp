@@ -19,11 +19,22 @@ img {
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+
+.expanded-menu .dropdown-menu.show {
+  width: 360px;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
 .dropdown-menu .dropdown-item {
   padding: 0.5rem 1.5rem;
   border-radius: 0px !important;
 }
 .expand-menu .dropdown-menu.show .dropdown-item {
+  width: 50% !important;
+}
+.expanded-menu .dropdown-menu.show .dropdown-item {
   width: 50% !important;
 }
 /* .nav-item:hover .dropdown-menu{

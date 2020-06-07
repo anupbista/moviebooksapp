@@ -103,7 +103,7 @@ export default function Navbars() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto nav-link dropdown-toggle">
-              <NavDropdown title="Movies" >
+              <NavDropdown title="Movies">
                 <Nav.Link className="dropdown-item" as={Link} to="/movies">
                   All
                 </Nav.Link>
@@ -116,7 +116,11 @@ export default function Navbars() {
                 <Nav.Link as={Link} to="/movies/toprated">
                   Top Rated
                 </Nav.Link>
-                <DropdownButton  title="Country" className="expand-menu" drop="right">
+                <DropdownButton
+                  title="Country"
+                  className="expand-menu"
+                  drop="right"
+                >
                   {countries.map(function (country) {
                     return (
                       <Dropdown.Item
@@ -129,7 +133,11 @@ export default function Navbars() {
                     );
                   })}
                 </DropdownButton>
-                <DropdownButton title="Genre" className="expand-menu" drop="right">
+                <DropdownButton
+                  title="Genre"
+                  className="expand-menu"
+                  drop="right"
+                >
                   {genre.map(function (gen) {
                     return (
                       <Dropdown.Item
@@ -164,7 +172,11 @@ export default function Navbars() {
                 <Nav.Link as={Link} to="/games/toprated">
                   Top Rated
                 </Nav.Link>
-                <DropdownButton title="Category" className="expand-menu" drop="right">
+                <DropdownButton
+                  title="Category"
+                  className="expand-menu"
+                  drop="right"
+                >
                   {category.map(function (cat) {
                     return (
                       <Dropdown.Item
@@ -182,7 +194,14 @@ export default function Navbars() {
                 <Nav.Link as={Link} to="/youtubevideos">
                   All
                 </Nav.Link>
-                <DropdownButton title="Category" className="expand-menu" drop="right">
+                <Nav.Link as={Link} to="/youtubechannels">
+                  Channels
+                </Nav.Link>
+                <DropdownButton
+                  title="Category"
+                  className="expanded-menu"
+                  drop="right"
+                >
                   {youTubeCategory.map(function (cat) {
                     return (
                       <Dropdown.Item

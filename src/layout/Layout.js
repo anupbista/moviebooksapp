@@ -53,8 +53,13 @@ const TopratedGames = React.lazy(() =>
 const Games = React.lazy(() => import("../components/Games"));
 
 // YouTubeVideos Section
-const YouTubeVideo = React.lazy(() => import("../components/YouTubeVideos/YouTubeVideo"));
+const YouTubeVideo = React.lazy(() =>
+  import("../components/YouTubeVideos/YouTubeVideo")
+);
 const YouTubeVideos = React.lazy(() => import("../components/YouTubeVideos"));
+const YouTubeChannels = React.lazy(() =>
+  import("../components/YouTubeVideos/YouTubeChannel")
+);
 
 const Layout = (props) => {
   const { loading } = useContext(GlobalContext);
@@ -96,7 +101,12 @@ const Layout = (props) => {
             <Route path="/games/:id" component={Game} />
 
             <Route path="/youtubevideos" exact component={YouTubeVideos} />
-            <Route path="/youtubevideos/category/:id" exact component={YouTubeVideos} />
+            <Route path="/youtubechannels" exact component={YouTubeChannels} />
+            <Route
+              path="/youtubevideos/category/:id"
+              exact
+              component={YouTubeVideos}
+            />
             <Route path="/youtubevideos/:id" component={YouTubeVideo} />
 
             <Redirect to="/" />
