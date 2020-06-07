@@ -58,7 +58,7 @@ const YouTubeVideo = React.lazy(() =>
 );
 const YouTubeVideos = React.lazy(() => import("../components/YouTubeVideos"));
 const YouTubeChannels = React.lazy(() =>
-  import("../components/YouTubeVideos/YouTubeChannel")
+  import("../components/YouTubeVideos/YouTubeChannels")
 );
 
 const Layout = (props) => {

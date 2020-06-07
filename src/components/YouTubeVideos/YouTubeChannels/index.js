@@ -51,7 +51,7 @@ export default function YouTubeChannels() {
               youtubeChannels.map(function (channel) {
                 return (
                   <Col md={2} key={channel.id} className="list-item">
-                    <Link to={`/youtubechannels/${channel.id}`}>
+                    <a href={channel.channellink} target="_blank">
                       <Card>
                         <Card.Img variant="top" src={channel.imagepath} />
                         <Card.Body className="ellipsis">
@@ -61,7 +61,7 @@ export default function YouTubeChannels() {
                           </span>
                         </Card.Body>
                       </Card>
-                    </Link>
+                    </a>
                   </Col>
                 );
               })
