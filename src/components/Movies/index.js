@@ -19,7 +19,7 @@ export default function Movies(props) {
 
   const [latestMovies, setlatestMovies] = useState([]);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -33,7 +33,7 @@ export default function Movies(props) {
       }&limit=${page.perPage}`
     );
     setlatestMovies(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 

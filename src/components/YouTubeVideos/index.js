@@ -17,7 +17,7 @@ export default function Videos(props) {
 
   const [latestVideos, setlatestVideos] = useState([]);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -31,7 +31,7 @@ export default function Videos(props) {
       }&limit=${page.perPage}`
     );
     setlatestVideos(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 

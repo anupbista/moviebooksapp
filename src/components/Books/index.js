@@ -16,7 +16,7 @@ export default function Boooks(props) {
   const [latestBooks, setlatestBooks] = useState([]);
   const { loading, toggleLoading } = useContext(GlobalContext);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -33,7 +33,7 @@ export default function Boooks(props) {
       }&limit=${page.perPage}`
     );
     setlatestBooks(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 

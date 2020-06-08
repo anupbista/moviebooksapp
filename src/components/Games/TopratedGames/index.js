@@ -12,7 +12,7 @@ export default function TopratedGames() {
   const [topratedGames, settopratedGames] = useState([]);
   const { loading, toggleLoading } = useContext(GlobalContext);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -29,7 +29,7 @@ export default function TopratedGames() {
       }&limit=${page.perPage}`
     );
     settopratedGames(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 

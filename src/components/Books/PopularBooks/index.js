@@ -11,7 +11,7 @@ import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 export default function PopularBooks() {
   const [popularBooks, setpopularBooks] = useState([]);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -28,7 +28,7 @@ export default function PopularBooks() {
       }&limit=${page.perPage}`
     );
     setpopularBooks(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 

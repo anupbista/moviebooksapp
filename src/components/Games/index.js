@@ -16,7 +16,7 @@ export default function Games(props) {
 
   const [latestGames, setlatestGames] = useState([]);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -30,7 +30,7 @@ export default function Games(props) {
       }&limit=${page.perPage}`
     );
     setlatestGames(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 

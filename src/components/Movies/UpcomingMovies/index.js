@@ -12,7 +12,7 @@ export default function UpcomingMovies() {
   const [upcomingMovies, setupcomingMovies] = useState([]);
   const { loading, toggleLoading } = useContext(GlobalContext);
   const [page, setPage] = useState({
-    perPage: 15,
+    perPage: 12,
     currentPage: 0,
   });
   const [pageCount, setPageCount] = useState(0);
@@ -29,7 +29,7 @@ export default function UpcomingMovies() {
       }&limit=${page.perPage}`
     );
     setupcomingMovies(res.data.data);
-    setPageCount(res.data.count / 15);
+    setPageCount(res.data.count / 12);
     toggleLoading(false);
   };
 
