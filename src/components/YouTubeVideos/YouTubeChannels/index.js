@@ -23,7 +23,9 @@ export default function YouTubeChannels() {
   const fetchData = async () => {
     toggleLoading(true);
     const res = await Axios.get(
-      `https://ent-api-dev.herokuapp.com/api/v1/youtubechannels`
+      `https://ent-api-dev.herokuapp.com/api/v1/youtubechannels?&page=${
+        page.currentPage + 1
+      }&limit=${page.perPage}`
     );
     setyoutubeChannels(res.data.data);
     setPageCount(res.data.count / 15);
