@@ -34,7 +34,7 @@ export const NavWrapper = styled.div`
     color: #00d1ff;
   }
   .img {
-    height: 32px;
+    height: 62px;
   }
   .nav-item .login {
     background-color: black;
