@@ -87,7 +87,8 @@ export default function Navbars() {
     setSearch(event.target.value);
   };
 
-  const handleClickSearch = () => {
+  const handleClickSearch = (e) => {
+    e.preventDefault();
     history.push("/movies", {
       search: search,
     });
@@ -216,7 +217,7 @@ export default function Navbars() {
                 </DropdownButton>
               </NavDropdown>
             </Nav>
-            <Form inline>
+            <Form inline onSubmit={handleClickSearch}>
               <FormControl
                 type="text"
                 placeholder="Search movie..."
